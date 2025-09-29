@@ -1,7 +1,7 @@
 // ===== Settings =====
-const INVITE_EVENT_ISO = '2025-11-14';             // D-day 날짜 (날짜 선택 기본값)
+const INVITE_EVENT_ISO = '2025-11-01';             // D-day 날짜 (날짜 선택 기본값)
 const INVITE_EVENT_TIME = { h: 18, m: 0, s: 0 };   // 카운트다운 시간 (18:00)
-const VENUE = { lat: 37.493310, lng: 127.032314 }; // 강남 구스아일랜드 좌표
+const VENUE = { lat: 35.492724, lng: 129.430707 }; // 타니베이 호텔 좌표
 
 // ===== Countdown =====
 const dd = document.getElementById('dd');
