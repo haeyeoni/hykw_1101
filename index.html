@@ -50,8 +50,16 @@
         <!-- Hero Slider -->
         <section class="hero-slider swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="images/hykw.jpg" alt="커플 사진 1" /></div>
-                <div class="swiper-slide"><img src="images/hykw2.jpg" alt="커플 사진 2" /></div>
+                <div class="swiper-slide"><img src="images/hykw_1.jpg" alt="커플 사진 1" /></div>
+                <div class="swiper-slide"><img src="images/hykw_2.jpg" alt="커플 사진 2" /></div>
+                <div class="swiper-slide"><img src="images/hykw_3.jpg" alt="커플 사진 3" /></div>
+                <div class="swiper-slide"><img src="images/hykw_4.jpg" alt="커플 사진 4" /></div>
+                <div class="swiper-slide"><img src="images/hykw_5.jpg" alt="커플 사진 5" /></div>
+                <div class="swiper-slide"><img src="images/hykw_6.jpg" alt="커플 사진 6" /></div>
+                <div class="swiper-slide"><img src="images/hykw_7.jpg" alt="커플 사진 7" /></div>
+                <div class="swiper-slide"><img src="images/hykw_8.jpg" alt="커플 사진 8" /></div>
+                <div class="swiper-slide"><img src="images/hykw_9.jpg" alt="커플 사진 9" /></div>
+                <div class="swiper-slide"><img src="images/hykw_10.jpg" alt="커플 사진 10" /></div>
             </div>
             <div class="swiper-pagination"></div>
         </section>
@@ -79,7 +87,7 @@
                 <!-- 신랑측 카드 -->
                 <article class="person-card groom">
                     <header class="pc-head">
-                        <span class="chip">신랑측</span>
+                        <span class="chip">💙신랑측💙</span>
                     </header>
 
                     <div class="pc-body">
@@ -93,7 +101,7 @@
                 <!-- 신부측 카드 -->
                 <article class="person-card bride">
                     <header class="pc-head">
-                        <span class="chip">신부측</span>
+                        <span class="chip">🩷신부측🩷</span>
                     </header>
 
                     <div class="pc-body">
@@ -150,54 +158,311 @@
         </section>
     </div>
 
-    <section class="timeline-alt">
-        <h2>저희 연애의 타임라인</h2>
-        <p class="subtitle">사랑이 자란 순간들을 기록했어요</p>
+    <!-- Timeline -->
+    <section class="timeline" aria-label="timeline">
+        <style>
+            .timeline {
+                position: relative;
+                margin: 64px auto;
+                padding: 0 16px;
+                max-width: 980px;
+            }
 
-        <ol class="tl">
-            <!-- ITEM 1 -->
-            <li class="tl-item">
-                <div class="tl-card">
-                    <figure class="tl-media">
-                        <img src="images/timeline1.jpg" alt="첫 만남">
-                    </figure>
-                    <div class="tl-body">
-                        <span class="tl-badge">22년 3월 · 서울</span>
-                        <h3>운명 같은 첫 인연</h3>
-                        <p>서로 애정하던 카페에서 첫눈에 반한 우리.</p>
-                    </div>
-                </div>
+            .timeline__line {
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: #e5e7eb;
+                /* light-gray center line */
+                transform: translateX(-50%);
+                border-radius: 2px;
+            }
+
+            .timeline__list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+
+            .timeline__item {
+                position: relative;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                align-items: start;
+                margin: 48px 0;
+            }
+
+            .timeline__item::before {
+                display: none;
+            }
+
+            .timeline__text {
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                height: 100%;
+                position: relative;
+            }
+
+            .timeline__text .badge {
+                display: inline-flex;
+                align-items: center;
+                font-size: 12px;
+                padding: 6px 10px;
+                border-radius: 14px;
+                background: #9ca3af;
+                /* gray pill like screenshot */
+                color: #ffffff;
+                font-weight: 700;
+                margin-bottom: 10px;
+                width: -moz-fit-content;
+                width: fit-content;
+                max-width: 100%;
+                white-space: nowrap;
+                position: relative;
+            }
+
+            /* 배지 중앙 높이에 점 배치 (gap 24px → 12px + 점 반지름 9px = 21px) */
+            .timeline__text .badge::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 10px;
+                height: 10px;
+                background: #9ca3af;
+                border: 4px solid #fff;
+                border-radius: 50%;
+                box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+                z-index: 1;
+            }
+
+            .timeline__item:nth-child(odd) .timeline__text .badge::after {
+                right: -21px;
+            }
+
+            .timeline__item:nth-child(even) .timeline__text .badge::after {
+                left: -21px;
+            }
+
+            /* 배지를 중앙 선 쪽으로 정렬 */
+            .timeline__item:nth-child(odd) .timeline__text .badge {
+                align-self: flex-end;
+            }
+
+            .timeline__item:nth-child(even) .timeline__text .badge {
+                align-self: flex-start;
+            }
+
+            .timeline__text h3 {
+                margin: 4px 0 10px;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .timeline__text p {
+                margin: 0;
+                line-height: 1.7;
+                color: #6b7280;
+                /* gray body text */
+            }
+
+            .timeline__media {
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+                border: none;
+                height: auto;
+                background: transparent;
+                margin: 0;
+                /* reset default figure margin */
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                width: clamp(140px, 38vw, 360px);
+                aspect-ratio: 4 / 5;
+            }
+
+            .timeline__media img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+            /* 교차 이미지 스타일 제거: 양쪽 모두 투명 배경 */
+            .timeline__item:nth-child(odd) .timeline__media,
+            .timeline__item:nth-child(even) .timeline__media {
+                padding: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            /* 동일 라인(같은 높이) 보장: 시작선을 맞추고 강제 높이 최소화 */
+            .timeline__text,
+            .timeline__media {
+                min-height: 0;
+            }
+
+            /* 텍스트 내부 첫 요소의 상단 여백 제거 (배지/제목 시작선 정렬) */
+            .timeline__text>*:first-child {
+                margin-top: 0;
+            }
+
+            /* 좌/우 번갈아 배치 */
+            .timeline__item:nth-child(odd) .timeline__text {
+                grid-column: 1;
+                text-align: right;
+            }
+
+            .timeline__item:nth-child(odd) .timeline__media {
+                grid-column: 2;
+            }
+
+            .timeline__item:nth-child(even) .timeline__text {
+                grid-column: 2;
+                text-align: left;
+            }
+
+            .timeline__item:nth-child(even) .timeline__media {
+                grid-column: 1;
+            }
+
+            /* 이미지 가로 정렬: 중앙선과 바깥 테두리의 정중앙 */
+            .timeline__item:nth-child(odd) .timeline__media,
+            .timeline__item:nth-child(even) .timeline__media {
+                justify-content: center;
+            }
+
+            /* 모바일 대응 */
+            @media (max-width: 720px) {
+                .timeline {
+                    margin: 40px auto;
+                }
+
+                .timeline__item {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 12px;
+                    margin: 24px 0 32px;
+                }
+
+                .timeline__text {
+                    padding-left: 0;
+                    height: auto;
+                }
+
+                .timeline__media {
+                    width: clamp(120px, 42vw, 320px);
+                    height: auto;
+                }
+            }
+
+            @media (max-width: 380px) {
+                .timeline__item {
+                    gap: 8px;
+                }
+
+                .timeline__media {
+                    width: clamp(110px, 44vw, 280px);
+                }
+            }
+        </style>
+
+        <div class="timeline__line" aria-hidden="true"></div>
+        <ol class="timeline__list">
+            <li class="timeline__item" data-aos="fade-up">
+                <article class="timeline__text">
+                    <span class="badge">2019년 4월 · 포항</span>
+                    <h3>😍운명 같은 첫 만남</h3>
+                    <p>아이돌 같은 그의 외모에 첫눈에 반해버린 그녀...</p>
+                </article>
+                <figure class="timeline__media">
+                    <img src="images/timeline1.jpg" alt="첫 만남">
+                </figure>
             </li>
 
-            <!-- ITEM 2 -->
-            <li class="tl-item">
-                <div class="tl-card">
-                    <figure class="tl-media">
-                        <img src="images/timeline2.jpg" alt="연애 기간">
-                    </figure>
-                    <div class="tl-body">
-                        <span class="tl-badge">연애 기간 1,280일</span>
-                        <h3>행복했던 3년 반</h3>
-                        <p>대화와 웃음이 머물던 계절들.</p>
-                    </div>
-                </div>
+            <li class="timeline__item" data-aos="fade-up" data-aos-delay="80">
+                <article class="timeline__text">
+                    <span class="badge">연애 기간 2400일</span>
+                    <h3>💕행복했던 6년 반</h3>
+                    <p>웃음과 울음을 함께하며 단단해진 우리</p>
+                </article>
+                <figure class="timeline__media">
+                    <img src="images/timeline2.jpg" alt="연애 기간">
+                </figure>
             </li>
 
-            <!-- ITEM 3 -->
-            <li class="tl-item">
-                <div class="tl-card">
-                    <figure class="tl-media">
-                        <img src="images/timeline3.jpg" alt="첫 데이트">
-                    </figure>
-                    <div class="tl-body">
-                        <span class="tl-badge">첫 데이트 장소</span>
-                        <h3>처음처럼 설렘</h3>
-                        <p>늘 함께 걷고 싶은 길.</p>
-                    </div>
-                </div>
+            <li class="timeline__item" data-aos="fade-up" data-aos-delay="120">
+                <article class="timeline__text">
+                    <span class="badge">우리의 신혼집에서</span>
+                    <h3>💍프로포즈</h3>
+                    <p>떨리는 "고백", 눈물나는 "수락"</p>
+                </article>
+                <figure class="timeline__media">
+                    <img src="images/timeline3.png" alt="같이 걷는 길">
+                </figure>
+            </li>
+            <li class="timeline__item" data-aos="fade-up" data-aos-delay="160">
+                <article class="timeline__text">
+                    <span class="badge">25년 가을</span>
+                    <h3>✈️우리의 신혼여행</h3>
+                    <p>늘 꿈꿔왔던 나라를 둘이 함께</p>
+                </article>
+                <figure class="timeline__media">
+                    <img src="images/timeline5.png" alt="우리의 새로운 시작">
+                </figure>
+            </li>
+            <li class="timeline__item" data-aos="fade-up" data-aos-delay="160">
+                <article class="timeline__text">
+                    <span class="badge">25년 11월 · 약속</span>
+                    <h3>👰‍♀️🤵우리의 새로운 시작</h3>
+                    <p>하나의 마음으로 같은 방향을 바라봅니다.</p>
+                </article>
+                <figure class="timeline__media">
+                    <img src="images/timeline4.png" alt="우리의 새로운 시작">
+                </figure>
             </li>
         </ol>
     </section>
+
+    <script>
+        (function () {
+            const LEAD_OFFSET_PX = 20; // 이미지가 배지보다 살짝 먼저 시작하도록 하는 오프셋
+            function adjustTimelineAlignment() {
+                const items = document.querySelectorAll('.timeline__item');
+                items.forEach((item) => {
+                    const badge = item.querySelector('.timeline__text .badge');
+                    const media = item.querySelector('.timeline__media');
+                    if (!badge || !media) return;
+                    // reset before measuring
+                    media.style.marginTop = '0px';
+                    const itemTop = item.getBoundingClientRect().top;
+                    const badgeTop = badge.getBoundingClientRect().top;
+                    const mediaTop = media.getBoundingClientRect().top;
+                    const delta = Math.round(badgeTop - itemTop - (mediaTop - itemTop));
+                    // 이미지가 배지보다 LEAD_OFFSET_PX 만큼 위에서 시작되도록 보정
+                    const adjusted = delta - LEAD_OFFSET_PX;
+                    if (adjusted !== 0) {
+                        media.style.marginTop = `${adjusted}px`;
+                    }
+                });
+            }
+            window.addEventListener('load', adjustTimelineAlignment);
+            window.addEventListener('resize', () => { requestAnimationFrame(adjustTimelineAlignment); });
+            document.addEventListener('DOMContentLoaded', adjustTimelineAlignment);
+        })();
+    </script>
 
 
     <!-- 지도/네비게이션 (카드) -->

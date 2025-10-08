@@ -150,3 +150,5 @@ function fadeTo(vol=1, ms=600){
   }, ms/steps);
 }
 audio.addEventListener('play', ()=>{ audio.volume=0; fadeTo(1,700); });
+
+// timeline alignment handled inline in index.html (rolled back)
