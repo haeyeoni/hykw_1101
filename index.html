@@ -9,13 +9,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="최경원 ❤️ 김해연 피로연에 초대합니다." />
     <meta property="og:description" content="편하게 오셔서 축하해 주세요!" />
-    <meta property="og:image" content="https://haeyeoni.github.io/hykw_1101/images/hykw.jpg" />
+    <meta property="og:image" content="https://haeyeoni.github.io/hykw_1101/images/hykw_1.jpg" />
     <meta property="og:url" content="https://haeyeoni.github.io/wedding-invitation/" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="최경원 ❤️ 김해연 피로연에 초대합니다.">
     <meta name="twitter:description" content="편하게 오셔서 축하해 주세요!">
-    <meta name="twitter:image" content="https://haeyeoni.github.io/hykw_1101/images/hykw.jpg">
+    <meta name="twitter:image" content="https://haeyeoni.github.io/hykw_1101/images/hykw_1.jpg">
 
     <!-- Webfonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,445 +158,115 @@
         </section>
     </div>
 
-    <!-- Timeline -->
-    <section class="timeline" aria-label="timeline">
-        <style>
-            .timeline {
-                position: relative;
-                margin: 64px auto;
-                padding: 0 16px;
-                max-width: 980px;
-            }
-
-            .timeline__line {
-                position: absolute;
-                left: 50%;
-                top: 0;
-                bottom: 0;
-                width: 2px;
-                background: #e5e7eb;
-                /* light-gray center line */
-                transform: translateX(-50%);
-                border-radius: 2px;
-            }
-
-            .timeline__list {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                position: relative;
-            }
-
-            .timeline__item {
-                position: relative;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
-                align-items: start;
-                margin: 48px 0;
-            }
-
-            .timeline__item::before {
-                display: none;
-            }
-
-            .timeline__text {
-                background: transparent;
-                border: none;
-                border-radius: 0;
-                padding: 0;
-                box-shadow: none;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                height: 100%;
-                position: relative;
-            }
-
-            .timeline__text .badge {
-                display: inline-flex;
-                align-items: center;
-                font-size: 12px;
-                padding: 6px 10px;
-                border-radius: 14px;
-                background: #9ca3af;
-                /* gray pill like screenshot */
-                color: #ffffff;
-                font-weight: 700;
-                margin-bottom: 10px;
-                width: -moz-fit-content;
-                width: fit-content;
-                max-width: 100%;
-                white-space: nowrap;
-                position: relative;
-            }
-
-            /* 배지 중앙 높이에 점 배치 (gap 24px → 12px + 점 반지름 9px = 21px) */
-            .timeline__text .badge::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 10px;
-                height: 10px;
-                background: #9ca3af;
-                border: 4px solid #fff;
-                border-radius: 50%;
-                box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
-                z-index: 1;
-            }
-
-            .timeline__item:nth-child(odd) .timeline__text .badge::after {
-                right: -21px;
-            }
-
-            .timeline__item:nth-child(even) .timeline__text .badge::after {
-                left: -21px;
-            }
-
-            /* 배지를 중앙 선 쪽으로 정렬 */
-            .timeline__item:nth-child(odd) .timeline__text .badge {
-                align-self: flex-end;
-            }
-
-            .timeline__item:nth-child(even) .timeline__text .badge {
-                align-self: flex-start;
-            }
-
-            .timeline__text h3 {
-                margin: 4px 0 10px;
-                font-size: 18px;
-                font-weight: 700;
-            }
-
-            .timeline__text p {
-                margin: 0;
-                line-height: 1.7;
-                color: #6b7280;
-                /* gray body text */
-            }
-
-            .timeline__media {
-                border-radius: 16px;
-                overflow: hidden;
-                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
-                border: none;
-                height: auto;
-                background: transparent;
-                margin: 0;
-                /* reset default figure margin */
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-                width: clamp(140px, 38vw, 360px);
-                aspect-ratio: 4 / 5;
-            }
-
-            .timeline__media img {
-                width: 100%;
-                height: 100%;
-                display: block;
-                object-fit: cover;
-                border-radius: 12px;
-            }
-
-            /* 교차 이미지 스타일 제거: 양쪽 모두 투명 배경 */
-            .timeline__item:nth-child(odd) .timeline__media,
-            .timeline__item:nth-child(even) .timeline__media {
-                padding: 0;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-            }
-
-            /* 동일 라인(같은 높이) 보장: 시작선을 맞추고 강제 높이 최소화 */
-            .timeline__text,
-            .timeline__media {
-                min-height: 0;
-            }
-
-            /* 텍스트 내부 첫 요소의 상단 여백 제거 (배지/제목 시작선 정렬) */
-            .timeline__text>*:first-child {
-                margin-top: 0;
-            }
-
-            /* 좌/우 번갈아 배치 */
-            .timeline__item:nth-child(odd) .timeline__text {
-                grid-column: 1;
-                text-align: right;
-            }
-
-            .timeline__item:nth-child(odd) .timeline__media {
-                grid-column: 2;
-            }
-
-            .timeline__item:nth-child(even) .timeline__text {
-                grid-column: 2;
-                text-align: left;
-            }
-
-            .timeline__item:nth-child(even) .timeline__media {
-                grid-column: 1;
-            }
-
-            /* 이미지 가로 정렬: 중앙선과 바깥 테두리의 정중앙 */
-            .timeline__item:nth-child(odd) .timeline__media,
-            .timeline__item:nth-child(even) .timeline__media {
-                justify-content: center;
-            }
-
-            /* 모바일 대응 */
-            @media (max-width: 720px) {
-                .timeline {
-                    margin: 40px auto;
-                }
-
-                .timeline__item {
-                    grid-template-columns: 1fr 1fr;
-                    gap: 12px;
-                    margin: 24px 0 32px;
-                }
-
-                .timeline__text {
-                    padding-left: 0;
-                    height: auto;
-                }
-
-                .timeline__media {
-                    width: clamp(120px, 42vw, 320px);
-                    height: auto;
-                }
-            }
-
-            @media (max-width: 380px) {
-                .timeline__item {
-                    gap: 8px;
-                }
-
-                .timeline__media {
-                    width: clamp(110px, 44vw, 280px);
-                }
-            }
-        </style>
-
-        <div class="timeline__line" aria-hidden="true"></div>
-        <ol class="timeline__list">
-            <li class="timeline__item" data-aos="fade-up">
-                <article class="timeline__text">
-                    <span class="badge">2019년 4월 · 포항</span>
-                    <h3>😍운명 같은 첫 만남</h3>
-                    <p>아이돌 같은 그의 외모에 첫눈에 반해버린 그녀...</p>
-                </article>
-                <figure class="timeline__media">
-                    <img src="images/timeline1.jpg" alt="첫 만남">
-                </figure>
-            </li>
-
-            <li class="timeline__item" data-aos="fade-up" data-aos-delay="80">
-                <article class="timeline__text">
-                    <span class="badge">연애 기간 2400일</span>
-                    <h3>💕행복했던 6년 반</h3>
-                    <p>웃음과 울음을 함께하며 단단해진 우리</p>
-                </article>
-                <figure class="timeline__media">
-                    <img src="images/timeline2.jpg" alt="연애 기간">
-                </figure>
-            </li>
-
-            <li class="timeline__item" data-aos="fade-up" data-aos-delay="120">
-                <article class="timeline__text">
-                    <span class="badge">우리의 신혼집에서</span>
-                    <h3>💍프로포즈</h3>
-                    <p>떨리는 "고백", 눈물나는 "수락"</p>
-                </article>
-                <figure class="timeline__media">
-                    <img src="images/timeline3.png" alt="같이 걷는 길">
-                </figure>
-            </li>
-            <li class="timeline__item" data-aos="fade-up" data-aos-delay="160">
-                <article class="timeline__text">
-                    <span class="badge">25년 가을</span>
-                    <h3>✈️우리의 신혼여행</h3>
-                    <p>늘 꿈꿔왔던 나라를 둘이 함께</p>
-                </article>
-                <figure class="timeline__media">
-                    <img src="images/timeline5.png" alt="우리의 새로운 시작">
-                </figure>
-            </li>
-            <li class="timeline__item" data-aos="fade-up" data-aos-delay="160">
-                <article class="timeline__text">
-                    <span class="badge">25년 11월 · 약속</span>
-                    <h3>👰‍♀️🤵우리의 새로운 시작</h3>
-                    <p>하나의 마음으로 같은 방향을 바라봅니다.</p>
-                </article>
-                <figure class="timeline__media">
-                    <img src="images/timeline4.png" alt="우리의 새로운 시작">
-                </figure>
-            </li>
-        </ol>
-    </section>
-
-    <script>
-        (function () {
-            const LEAD_OFFSET_PX = 20; // 이미지가 배지보다 살짝 먼저 시작하도록 하는 오프셋
-            function adjustTimelineAlignment() {
-                const items = document.querySelectorAll('.timeline__item');
-                items.forEach((item) => {
-                    const badge = item.querySelector('.timeline__text .badge');
-                    const media = item.querySelector('.timeline__media');
-                    if (!badge || !media) return;
-                    // reset before measuring
-                    media.style.marginTop = '0px';
-                    const itemTop = item.getBoundingClientRect().top;
-                    const badgeTop = badge.getBoundingClientRect().top;
-                    const mediaTop = media.getBoundingClientRect().top;
-                    const delta = Math.round(badgeTop - itemTop - (mediaTop - itemTop));
-                    // 이미지가 배지보다 LEAD_OFFSET_PX 만큼 위에서 시작되도록 보정
-                    const adjusted = delta - LEAD_OFFSET_PX;
-                    if (adjusted !== 0) {
-                        media.style.marginTop = `${adjusted}px`;
-                    }
-                });
-            }
-            window.addEventListener('load', adjustTimelineAlignment);
-            window.addEventListener('resize', () => { requestAnimationFrame(adjustTimelineAlignment); });
-            document.addEventListener('DOMContentLoaded', adjustTimelineAlignment);
-        })();
-    </script>
-
-
     <!-- 지도/네비게이션 (카드) -->
     <section class="map" aria-label="map">
-        <div class="in" data-aos="fade-up">
-            <h3 class="title">오시는 길</h3>
-            <div id="map"></div>
+        <div class="dday-title">Our Timeline</div>
+        <!-- Timeline -->
+        <section class="timeline" aria-label="timeline">
+            <div class="timeline__line" aria-hidden="true"></div>
+            <ol class="timeline__list">
+                <li class="timeline__item">
+                    <article class="timeline__text">
+                        <span class="badge">2019년 4월 · 포항</span>
+                        <h4>😍운명 같은 첫 만남</h4>
+                        <p>아이돌 같은 그의 외모에 첫눈에 반해버린 그녀...</p>
+                    </article>
+                    <figure class="timeline__media">
+                        <img src="images/timeline1.jpg" alt="첫 만남">
+                    </figure>
+                </li>
 
-            <!-- 네비게이션 안내 -->
-            <h3 class="title">네비게이션</h3>
-            <p class="nav-desc">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
+                <li class="timeline__item">
+                    <article class="timeline__text">
+                        <span class="badge">연애 기간 2400일</span>
+                        <h4>💕행복했던 6년 반</h4>
+                        <p>웃음과 울음을 함께하며 단단해진 우리</p>
+                    </article>
+                    <figure class="timeline__media">
+                        <img src="images/timeline2.jpg" alt="연애 기간">
+                    </figure>
+                </li>
 
-            <div class="nav-apps">
-                <a class="nav-btn"
-                    href="kakaomap://route?ep=35.492724,129.430707&by=CAR&name=%EC%9A%B8%EC%82%B0%20%ED%83%80%EB%8B%88%EB%B2%A0%EC%9D%B4%20%ED%98%B8%ED%85%94"
-                    target="_blank" rel="noopener">
-                    <span class="nav-ico" aria-hidden="true">
-                        <img src="images/kakaomap.png" />
-                    </span>
-                    <span class="nav-label">카카오맵</span>
-                </a>
-
-                <!-- 티맵 -->
-                <a class="nav-btn"
-                    href="tmap://route?goalname=%EC%9A%B8%EC%82%B0%20%ED%83%80%EB%8B%88%EB%B2%A0%EC%9D%B4%20%ED%98%B8%ED%85%94&goalx=129.430707&goaly=35.492724"
-                    target="_blank" rel="noopener">
-                    <span class="nav-ico" aria-hidden="true">
-                        <img src="images/tmap.png" />
-                    </span>
-                    <span class="nav-label">티맵</span>
-                </a>
-
-                <!-- 네이버지도 -->
-                <a class="nav-btn"
-                    href="nmap://route/walk?dlat=35.492724&dlng=129.430707&dname=%EC%9A%B8%EC%82%B0%20%ED%83%80%EB%8B%88%EB%B2%A0%EC%9D%B4%20%ED%98%B8%ED%85%94"
-                    target="_blank" rel="noopener">
-                    <span class="nav-ico" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <rect width="24" height="24" rx="6" fill="#03c75a" />
-                            <path d="M7 17V7h3.5l3 4.7V7H17v10h-3.5L10.5 12V17H7z" fill="#fff" />
-                        </svg>
-                    </span>
-                    <span class="nav-label">네이버지도</span>
-                </a>
-            </div>
-
-            <h3 class="title">주차 안내</h3>
-            <p>주차는 건물 지하에 15대까지 가능합니다. <br><br><br><br></p>
-
-        </div>
+                <li class="timeline__item">
+                    <article class="timeline__text">
+                        <span class="badge">우리의 신혼집에서</span>
+                        <h4>💍프로포즈</h4>
+                        <p>떨림은 고백이 되고,<br>고백은 약속이 되었다</p>
+                    </article>
+                    <figure class="timeline__media">
+                        <img src="images/timeline3.png" alt="같이 걷는 길">
+                    </figure>
+                </li>
+                <li class="timeline__item">
+                    <article class="timeline__text">
+                        <span class="badge">25년 가을</span>
+                        <h4>✈️우리의 신혼여행</h4>
+                        <p>꿈꾸던 그곳에서, 함께한 계절</p>
+                    </article>
+                    <figure class="timeline__media">
+                        <img src="images/timeline5.png" alt="우리의 새로운 시작">
+                    </figure>
+                </li>
+                <li class="timeline__item">
+                    <article class="timeline__text">
+                        <span class="badge">25년 11월 · 약속</span>
+                        <h4>💐우리의 새로운 시작</h4>
+                        <p>하나의 마음으로, 같은 길을 걸어가겠습니다</p>
+                    </article>
+                    <figure class="timeline__media">
+                        <img src="images/timeline4.png" alt="우리의 새로운 시작">
+                    </figure>
+                </li>
+            </ol>
+        </section>
     </section>
 
 
-    <section class="gift-accordion" id="gift">
-        <h2 class="gift-title">마음 전하실 곳</h2>
-        <p class="gift-desc">참석이 어려우신 분들을 위해 계좌를 기재했습니다. 너그러운 마음으로 양해 부탁드립니다.</p>
+    <section class="gift-accordion" id="gift" data-aos="fade-up">
+        <h3 class="title">오시는 길</h3>
+        <div id="map"></div>
+        <!-- 네비게이션 안내 -->
+        <h3 class="title">네비게이션</h3>
+        <p class="desc">원하시는 앱을 선택하시면 길안내가 시작됩니다.</p>
 
-        <!-- 신랑측 -->
-        <details class="gift-pane">
-            <summary class="gift-pane__summary">
-                <span>신랑측에게</span>
-                <svg class="ico" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </summary>
+        <div class="nav-apps">
+            <a class="nav-btn"
+                href="kakaomap://route?ep=35.492724,129.430707&by=CAR&name=%EC%9A%B8%EC%82%B0%20%ED%83%80%EB%8B%88%EB%B2%A0%EC%9D%B4%20%ED%98%B8%ED%85%94"
+                target="_blank" rel="noopener">
+                <span class="nav-ico" aria-hidden="true">
+                    <img src="images/kakaomap.png" />
+                </span>
+                <span class="nav-label">카카오맵</span>
+            </a>
 
-            <!-- 한 명씩 .gift-card 로 추가 -->
-            <article class="gift-card">
-                <header class="gift-card__head">
-                    <span class="role">신랑</span>
-                    <strong class="name">최경원</strong>
-                </header>
+            <!-- 티맵 -->
+            <a class="nav-btn"
+                href="tmap://route?goalname=%EC%9A%B8%EC%82%B0%20%ED%83%80%EB%8B%88%EB%B2%A0%EC%9D%B4%20%ED%98%B8%ED%85%94&goalx=129.430707&goaly=35.492724"
+                target="_blank" rel="noopener">
+                <span class="nav-ico" aria-hidden="true">
+                    <img src="images/tmap.png" />
+                </span>
+                <span class="nav-label">티맵</span>
+            </a>
 
-                <div class="gift-card__body">
-                    <div class="bank">
-                        <span class="bank-name">국민은행</span>
-                        <span class="acct">123456-01-234567</span>
-                    </div>
-                    <div class="actions">
-                        <button type="button" class="btn-copy" data-copy="국민 123456-01-234567 (예금주: 최경원)"
-                            aria-label="계좌번호 복사">
-                            <!-- copy 아이콘 -->
-                            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M9 9h10v10H9z" />
-                                <path d="M5 5h10v2H7v8H5z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </article>
+            <!-- 네이버지도 -->
+            <a class="nav-btn"
+                href="nmap://route/walk?dlat=35.492724&dlng=129.430707&dname=%EC%9A%B8%EC%82%B0%20%ED%83%80%EB%8B%88%EB%B2%A0%EC%9D%B4%20%ED%98%B8%ED%85%94"
+                target="_blank" rel="noopener">
+                <span class="nav-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <rect width="24" height="24" rx="6" fill="#03c75a" />
+                        <path d="M7 17V7h3.5l3 4.7V7H17v10h-3.5L10.5 12V17H7z" fill="#fff" />
+                    </svg>
+                </span>
+                <span class="nav-label">네이버지도</span>
+            </a>
+        </div>
 
-            <article class="gift-card">
-                <header class="gift-card__head">
-                    <span class="role">신랑 아버지</span>
-                    <strong class="name">최길송</strong>
-                </header>
-                <div class="gift-card__body">
-                    <div class="bank">
-                        <span class="bank-name">국민은행</span>
-                        <span class="acct">111111-11-111111</span>
-                    </div>
-                    <div class="actions">
-                        <button type="button" class="btn-copy" data-copy="국민 111111-11-111111 (예금주: 최OO)"
-                            aria-label="계좌번호 복사">
-                            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M9 9h10v10H9z" />
-                                <path d="M5 5h10v2H7v8H5z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="gift-card">
-                <header class="gift-card__head">
-                    <span class="role">신랑 어머니</span>
-                    <strong class="name">선덕임</strong>
-                </header>
-                <div class="gift-card__body">
-                    <div class="bank">
-                        <span class="bank-name">국민은행</span>
-                        <span class="acct">111111-11-111111</span>
-                    </div>
-                    <div class="actions">
-                        <button type="button" class="btn-copy" data-copy="국민 111111-11-111111 (예금주: 최OO)"
-                            aria-label="계좌번호 복사">
-                            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M9 9h10v10H9z" />
-                                <path d="M5 5h10v2H7v8H5z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </article>
-        </details>
+        <h3 class="title">주차 안내</h3>
+        <p class="desc">호텔 주차장 무료로 사용가능합니다. <br></p>
+        <h3 class="title">마음 전하실 곳</h3>
+        <p class="desc">참석이 어려우신 분들을 위해 계좌를 기재했습니다. 너그러운 마음으로 양해 부탁드립니다.</p>
 
         <!-- 신부측 -->
         <details class="gift-pane">
@@ -609,16 +279,37 @@
 
             <article class="gift-card">
                 <header class="gift-card__head">
+                    <span class="role">신부 모</span>
+                    <strong class="name">박경희</strong>
+                </header>
+                <div class="gift-card__body">
+                    <div class="bank">
+                        <span class="bank-name">농협</span>
+                        <span class="acct">815-1265-6079-076</span>
+                    </div>
+                    <div class="actions">
+                        <button type="button" class="btn-copy" data-copy="농협 815-1265-6079-076 (예금주: 박경희)"
+                            aria-label="계좌번호 복사">
+                            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M9 9h10v10H9z" />
+                                <path d="M5 5h10v2H7v8H5z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="gift-card">
+                <header class="gift-card__head">
                     <span class="role">신부</span>
                     <strong class="name">김해연</strong>
                 </header>
                 <div class="gift-card__body">
                     <div class="bank">
-                        <span class="bank-name">신한은행</span>
-                        <span class="acct">110-123-456789</span>
+                        <span class="bank-name">새마을금고</span>
+                        <span class="acct">9003-27-361050-1</span>
                     </div>
                     <div class="actions">
-                        <button type="button" class="btn-copy" data-copy="신한 110-123-456789 (예금주: 김해연)"
+                        <button type="button" class="btn-copy" data-copy="새마을금고 9003-27-361050-1 (예금주: 김해연)"
                             aria-label="계좌번호 복사">
                             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M9 9h10v10H9z" />
@@ -633,7 +324,6 @@
         <div id="gift-toast" class="gift-toast" role="status" aria-live="polite" aria-atomic="true"></div>
     </section>
 
-
     <!-- Vendor scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -641,56 +331,6 @@
 
     <script src="assets/js/app.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: false
-        });
-    </script>
-    <script>
-        (function () {
-            const toastEl = document.getElementById('gift-toast');
-            let toastTimer;
-            function showToast(msg) {
-                clearTimeout(toastTimer);
-                toastEl.textContent = msg;
-                toastEl.classList.add('is-show');
-                if (navigator.vibrate) navigator.vibrate(10);
-                toastTimer = setTimeout(() => toastEl.classList.remove('is-show'), 1800);
-            }
-
-            async function copyText(text) {
-                try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (e) { }
-                try {
-                    const ta = document.createElement('textarea');
-                    ta.value = text; ta.readOnly = true; ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
-                    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
-                    const ok = document.execCommand('copy'); ta.remove(); if (ok) return true;
-                } catch (e) { }
-                try {
-                    const div = document.createElement('div');
-                    div.contentEditable = 'true'; div.style.position = 'fixed'; div.style.top = '-1000px'; div.textContent = text;
-                    document.body.appendChild(div); const sel = window.getSelection(); const range = document.createRange();
-                    range.selectNodeContents(div); sel.removeAllRanges(); sel.addRange(range);
-                    const ok = document.execCommand('copy'); sel.removeAllRanges(); div.remove(); if (ok) return true;
-                } catch (e) { }
-                return false;
-            }
-
-            function onClick(e) {
-                const btn = e.target.closest('.btn-copy');
-                if (!btn) return;
-                e.preventDefault(); e.stopPropagation();
-                const text = btn.dataset.copy || '';
-                if (!text) return;
-                copyText(text).then(ok => showToast(ok ? '계좌번호가 복사되었어요' : '복사가 막혀 있어요. 길게 눌러 복사해 주세요'));
-            }
-
-            document.addEventListener('click', onClick, { passive: false });
-            document.addEventListener('touchend', onClick, { passive: false });
-        })();
-    </script>
-
 </body>
 
 </html>

@@ -665,7 +665,7 @@ img {
     font-size: 16px;
 }
 
-.nav-desc {
+.desc {
     margin: 0 0 12px;
     color: #555;
     font-size: 13px;
@@ -780,19 +780,14 @@ img {
     font-weight: 700
 }
 
-.gift-desc {
-    margin: 0 0 16px;
-    text-align: center;
-    font-size: 13px;
-    opacity: .7
-}
 
 .gift-pane {
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
     overflow: hidden;
-    margin-top: 14px
+    margin-top: 14px;
+    font-size: 14px;
 }
 
 .gift-pane__summary {
@@ -1638,58 +1633,6 @@ img {
     }
 
     /* 오른쪽 카드 → 중앙선 */
-
-    /* 홀수 아이템은 이미지가 중앙선 쪽에 오도록 뒤집기 */
-    .tl-item:nth-child(odd) .tl-card {
-        grid-template-columns: 1fr 96px
-    }
-
-    .tl-item:nth-child(odd) .tl-card img {
-        order: 2
-    }
-
-    .tl-item:nth-child(odd) .tl-card .tl-body {
-        order: 1
-    }
-}
-
-/* 모바일: 한 줄 스택 + 왼쪽 라인으로 단순화 */
-@media (max-width: 719px) {
-    .tl::before {
-        left: 24px
-    }
-
-    /* 왼쪽 살짝 안쪽으로 */
-    .tl-item {
-        grid-template-columns: 1fr
-    }
-
-    /* 1열 */
-    .tl-item::after {
-        left: 24px
-    }
-
-    /* 점을 왼쪽 라인 위로 */
-    .tl-card {
-        margin-left: 44px
-    }
-
-    /* 라인/점과 카드 간격 */
-    .tl-card::before {
-        display: none
-    }
-}
-
-/* Hover 작은 상호작용(선택) */
-@media (prefers-reduced-motion: no-preference) {
-    .tl-card {
-        transition: transform .22s ease, box-shadow .22s ease
-    }
-
-    .tl-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 22px rgba(0, 0, 0, .08)
-    }
 }
 
 /* 카드: 기본은 [이미지][본문] */
@@ -1746,7 +1689,6 @@ img {
     object-position: center;
 }
 
-/* ===== Timeline (alternating with center spine) ===== */
 .timeline {
     position: relative;
     margin: 64px auto;
@@ -1761,6 +1703,7 @@ img {
     bottom: 0;
     width: 2px;
     background: #e5e7eb;
+    /* light-gray center line */
     transform: translateX(-50%);
     border-radius: 2px;
 }
@@ -1778,7 +1721,7 @@ img {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     align-items: start;
-    margin: 48px 0;
+    margin: 0px 0;
 }
 
 .timeline__item::before {
@@ -1804,10 +1747,10 @@ img {
     font-size: 12px;
     padding: 6px 10px;
     border-radius: 14px;
-    background: #9ca3af;
+    background: #071f4a;
+    /* gray pill like screenshot */
     color: #ffffff;
     font-weight: 700;
-    margin-bottom: 10px;
     width: -moz-fit-content;
     width: fit-content;
     max-width: 100%;
@@ -1815,16 +1758,6 @@ img {
     position: relative;
 }
 
-/* badge toward spine */
-.timeline__item:nth-child(odd) .timeline__text .badge {
-    align-self: flex-end;
-}
-
-.timeline__item:nth-child(even) .timeline__text .badge {
-    align-self: flex-start;
-}
-
-/* dot aligned to badge center */
 .timeline__text .badge::after {
     content: "";
     position: absolute;
@@ -1840,16 +1773,27 @@ img {
 }
 
 .timeline__item:nth-child(odd) .timeline__text .badge::after {
-    right: -21px;
+    right: -26px;
 }
 
 .timeline__item:nth-child(even) .timeline__text .badge::after {
-    left: -21px;
+    left: -26px;
 }
 
-.timeline__text h3 {
+/* 배지를 중앙 선 쪽으로 정렬 */
+.timeline__item:nth-child(odd) .timeline__text .badge {
+    align-self: flex-end;
+    right: 5px;
+}
+
+.timeline__item:nth-child(even) .timeline__text .badge {
+    align-self: flex-start;
+    left: 5px;
+}
+
+.timeline__text h4 {
     margin: 4px 0 10px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
 }
 
@@ -1857,10 +1801,9 @@ img {
     margin: 0;
     line-height: 1.7;
     color: #6b7280;
-}
-
-.timeline__text>*:first-child {
-    margin-top: 0;
+    /* gray body text */
+    word-break: keep-all;
+    font-size: clamp(13px, 1.5vw, 14px);
 }
 
 .timeline__media {
@@ -1871,20 +1814,42 @@ img {
     height: auto;
     background: transparent;
     margin: 0;
+    /* reset default figure margin */
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    width: clamp(140px, 38vw, 360px);
+    aspect-ratio: 4 / 5;
 }
 
 .timeline__media img {
-    width: 88%;
-    height: auto;
+    width: 90%;
     display: block;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
-/* alternate side placement */
+/* 교차 이미지 스타일 제거: 양쪽 모두 투명 배경 */
+.timeline__item:nth-child(odd) .timeline__media,
+.timeline__item:nth-child(even) .timeline__media {
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* 동일 라인(같은 높이) 보장: 시작선을 맞추고 강제 높이 최소화 */
+.timeline__text,
+.timeline__media {
+    min-height: 0;
+}
+
+/* 텍스트 내부 첫 요소의 상단 여백 제거 (배지/제목 시작선 정렬) */
+.timeline__text>*:first-child {
+    margin-top: 0;
+}
+
+/* 좌/우 번갈아 배치 */
 .timeline__item:nth-child(odd) .timeline__text {
     grid-column: 1;
     text-align: right;
@@ -1892,6 +1857,7 @@ img {
 
 .timeline__item:nth-child(odd) .timeline__media {
     grid-column: 2;
+    justify-self: start;
 }
 
 .timeline__item:nth-child(even) .timeline__text {
@@ -1901,41 +1867,15 @@ img {
 
 .timeline__item:nth-child(even) .timeline__media {
     grid-column: 1;
+    justify-self: end;
 }
 
-/* mobile */
-@media (max-width: 720px) {
-    .timeline {
-        margin: 40px auto;
-    }
-
-    .timeline__line {
-        left: 24px;
-        transform: none;
-    }
-
+@media (max-width: 380px) {
     .timeline__item {
-        grid-template-columns: 1fr;
-        gap: 14px;
-        margin: 28px 0 40px;
-    }
-
-    .timeline__text {
-        text-align: left !important;
-        padding-left: 18px;
-        height: auto;
-    }
-
-    .timeline__text,
-    .timeline__media {
-        min-height: auto;
+        gap: 8px;
     }
 
     .timeline__media {
-        height: auto;
-    }
-
-    .timeline__media img {
-        width: 100%;
+        width: clamp(110px, 44vw, 280px);
     }
 }
